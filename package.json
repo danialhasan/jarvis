@@ -1,0 +1,25 @@
+{
+  "name": "jarvis-setup",
+  "version": "1.0.0",
+  "description": "Setup repository for Claude Code with MCP integrations - Calendar and Gmail automation",
+  "main": "setup.js",
+  "scripts": {
+    "setup": "node setup.js",
+    "test-claude": "claude --version",
+    "check-mcp": "claude mcp list"
+  },
+  "keywords": [
+    "claude-code",
+    "mcp",
+    "calendar",
+    "gmail",
+    "ai-assistant",
+    "automation"
+  ],
+  "author": "Danial Hasan",
+  "license": "MIT",
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
