@@ -59,6 +59,59 @@ Understanding Claude pricing helps you choose the right plan for your usage:
 
 **💡 Recommendation**: Start with Pro Plan ($20/month) for full Claude Code access. If you're doing heavy automation (100+ interactions daily), consider Max Expanded.
 
+## 🧠 Understanding Claude Code's Memory Model
+
+### Stateless Sessions
+**Important**: Claude Code is stateless - each conversation starts fresh with no memory of previous sessions.
+
+**What this means**:
+- No persistent context between sessions
+- Each `claude` command starts a new conversation
+- Previous conversations are not automatically remembered
+
+### Persistence Solutions
+
+#### Option 1: Simple File-Based Storage (RECOMMENDED TO START)
+Store your data in markdown files that Claude can read/write:
+
+```bash
+# Create a knowledge base
+mkdir ~/jarvis-knowledge
+echo "# My Work Context" > ~/jarvis-knowledge/context.md
+echo "# Meeting Notes" > ~/jarvis-knowledge/meetings.md
+echo "# Contact List" > ~/jarvis-knowledge/contacts.md
+```
+
+**Usage Example**:
+```
+# In Claude Code:
+"Read my context.md file and update it with today's meeting outcomes"
+"Add this new contact to my contacts.md file"
+"Review my meetings.md and suggest follow-ups needed"
+```
+
+#### Option 2: Supabase Database (FULL CRM SYSTEM)
+For advanced users who want a complete CRM like Danial's setup:
+
+```bash
+# Add Supabase MCP server
+claude mcp add supabase "npx -y @supabase/mcp-server-supabase@latest --access-token YOUR_TOKEN"
+```
+
+**Benefits of Supabase**:
+- Structured data with relationships
+- Advanced querying capabilities  
+- Real-time sync across devices
+- Web dashboard for data management
+- Scalable for business growth
+
+**See [`SUPABASE_SETUP.md`](./SUPABASE_SETUP.md) guide for complete CRM setup**
+
+### When to Upgrade
+- **Start with**: Markdown files in ~/jarvis-knowledge/
+- **Upgrade when**: You have 50+ contacts or need structured data
+- **Full CRM when**: Managing business relationships systematically
+
 ## 🛠 Installation Guide
 
 ### Step 1: Install Node.js (if not already installed)
@@ -263,6 +316,40 @@ source ~/.zshrc
 "Based on my calendar, draft follow-up emails for meetings that happened today"
 "Find emails related to my upcoming meetings and summarize key points"
 ```
+
+## ⚠️ Claude Code Safety & Guardrails
+
+### Built-in Safety Features
+Claude Code has safety measures to prevent dangerous operations:
+
+**Protected Commands**:
+- `rm -rf /` or similar destructive file operations
+- System-level modifications that could break your computer
+- Network operations that could compromise security
+- Dangerous sudo commands
+
+**Permission System**:
+- Claude asks for confirmation before making significant changes
+- File modifications show diffs before applying
+- Git operations require explicit approval
+
+### Autonomous Mode (Advanced Users Only)
+```bash
+# CAUTION: Only for experienced users
+claude --dangerously-skip-permissions
+```
+
+**⚠️ Use with extreme caution**:
+- Bypasses safety confirmations
+- Can make system modifications without asking
+- Intended for experienced developers who understand the risks
+- **Recommendation**: Never use unless you fully understand the implications
+
+### Safe Usage Guidelines
+1. **Start conservatively**: Use default safety settings
+2. **Review changes**: Always check file diffs before approving
+3. **Backup important data**: Git repositories, config files
+4. **Understand commands**: If unsure what Claude wants to do, ask for explanation
 
 ## 🚨 Troubleshooting
 

@@ -181,7 +181,7 @@ function main() {
     
     console.log('\n🎉 Setup complete!');
     console.log('\n🚀 Next steps:');
-    console.log('1. Open a new terminal');
+    console.log('1. Open a new terminal (CMD + T');
     console.log('2. Run: claude');
     console.log('3. Try: "Show me my calendar for today"');
     console.log('4. For Gmail: First use will trigger authentication flow');
