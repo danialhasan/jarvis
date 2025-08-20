@@ -23,6 +23,42 @@ This repository provides everything needed to set up Claude Code with the same M
 - **Anthropic API Key** (for Claude)
 - **Google Account** (for Calendar and Gmail access)
 
+## 💰 Claude Pricing Plans - Important Context
+
+Understanding Claude pricing helps you choose the right plan for your usage:
+
+### Free Plan
+- **Cost**: Free
+- **Usage**: ~20 searches per day (resets every 5 hours)
+- **Limitations**: Usage caps, restrictions during peak times
+- **Claude Code**: Not available
+
+### Pro Plan - **RECOMMENDED FOR INDIVIDUAL USE**
+- **Cost**: $20/month ($18/month annually)
+- **Usage**: 5x more than free plan
+- **Claude Code**: ✅ Full access
+- **Best For**: Individual power users, content creators
+
+### Team Plan
+- **Cost**: $30/month per user ($25/month annually)
+- **Minimum**: 5 users required
+- **Claude Code**: ❌ Not available (individual plans only)
+- **Best For**: Team collaboration, shared projects
+
+### Max Plans (2025)
+- **Max Expanded**: $100/month (5x Pro usage)
+- **Max Ultimate**: $200/month (maximum access)
+- **Claude Code**: ✅ Full access with higher limits
+- **Best For**: Heavy automation users, businesses
+
+### API Usage Costs (Pay-per-use alternative)
+- **Sonnet 4**: $3-6 per million input tokens, $15-22.50 output tokens
+- **Haiku 3.5**: $0.80 input, $4 output per million tokens
+- **Average**: ~$6 per developer per day for Claude Code
+- **Best For**: Developers who want pay-as-you-go pricing
+
+**💡 Recommendation**: Start with Pro Plan ($20/month) for full Claude Code access. If you're doing heavy automation (100+ interactions daily), consider Max Expanded.
+
 ## 🛠 Installation Guide
 
 ### Step 1: Install Node.js (if not already installed)
@@ -72,21 +108,45 @@ Claude Code uses MCP servers to connect to external services. We'll set up the c
 # Add calendar MCP server
 claude mcp add ical-server mcp-ical
 ```
+**📚 Documentation**: [mcp-ical GitHub](https://github.com/Omar-V2/mcp-ical) - Detailed setup and troubleshooting
 
 #### Gmail Integration
 ```bash
 # Add Gmail MCP server with auto-authentication
 claude mcp add gmail "npx @gongrzhe/server-gmail-autoauth-mcp"
 ```
+**📚 Documentation**: [Gmail MCP Server](https://github.com/gongrzhe/server-gmail-autoauth-mcp) - OAuth setup and commands
 
 #### Optional: Additional Useful Servers
 ```bash
 # Memory for persistent knowledge
 claude mcp add memory "npx -y @modelcontextprotocol/server-memory"
+```
+**📚 Documentation**: [Memory Server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) - Knowledge persistence
 
+```bash
 # Linear for task management (if you use Linear)
 claude mcp add Linear "https://mcp.linear.app/sse"
 ```
+**📚 Documentation**: [Linear MCP](https://mcp.linear.app) - Task and project management
+
+```bash
+# Supabase for database operations
+claude mcp add supabase "npx -y @supabase/mcp-server-supabase@latest --access-token YOUR_TOKEN"
+```
+**📚 Documentation**: [Supabase MCP](https://github.com/supabase/mcp-server-supabase) - Database integration
+
+### 🔗 MCP Server Resources
+
+**Core MCP Documentation**:
+- [Model Context Protocol Docs](https://modelcontextprotocol.io/docs) - Official MCP specification
+- [Claude Code MCP Guide](https://docs.anthropic.com/en/docs/claude-code/mcp) - Claude-specific setup
+- [MCP Server Registry](https://github.com/modelcontextprotocol/servers) - Community server directory
+
+**Debugging Resources**:
+- [Gmail MCP Troubleshooting](https://github.com/gongrzhe/server-gmail-autoauth-mcp/blob/main/README.md#troubleshooting)
+- [iCal Server Issues](https://github.com/Omar-V2/mcp-ical/issues) - Common problems and solutions
+- [Claude Code Troubleshooting](https://docs.anthropic.com/en/docs/claude-code/troubleshooting) - Official troubleshooting guide
 
 ### Step 5: Gmail Authentication Setup
 
