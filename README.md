@@ -172,12 +172,6 @@ claude mcp add gmail "npx @gongrzhe/server-gmail-autoauth-mcp"
 
 #### Optional: Additional Useful Servers
 ```bash
-# Memory for persistent knowledge
-claude mcp add memory "npx -y @modelcontextprotocol/server-memory"
-```
-**📚 Documentation**: [Memory Server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) - Knowledge persistence
-
-```bash
 # Linear for task management (if you use Linear)
 claude mcp add Linear "https://mcp.linear.app/sse"
 ```
