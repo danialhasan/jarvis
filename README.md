@@ -31,7 +31,7 @@ Understanding Claude pricing helps you choose the right plan for your usage:
 - **Cost**: Free
 - **Usage**: ~20 searches per day (resets every 5 hours)
 - **Limitations**: Usage caps, restrictions during peak times
-- **Claude Code**: Not available
+- **Claude Code** (the general agent Danial uses): Not available
 
 ### Pro Plan - **RECOMMENDED FOR INDIVIDUAL USE**
 - **Cost**: $20/month ($18/month annually)
@@ -50,6 +50,7 @@ Understanding Claude pricing helps you choose the right plan for your usage:
 - **Max Ultimate**: $200/month (maximum access)
 - **Claude Code**: ✅ Full access with higher limits
 - **Best For**: Heavy automation users, businesses
+- **This is what Danial uses**
 
 ### API Usage Costs (Pay-per-use alternative)
 - **Sonnet 4**: $3-6 per million input tokens, $15-22.50 output tokens
@@ -176,6 +177,17 @@ claude mcp add gmail "npx @gongrzhe/server-gmail-autoauth-mcp"
 claude mcp add Linear "https://mcp.linear.app/sse"
 ```
 **📚 Documentation**: [Linear MCP](https://mcp.linear.app) - Task and project management
+
+#### iMessage Integration (macOS Only)
+```bash
+# Install Deno (required for iMessage MCP)
+brew install deno
+
+# Add iMessage MCP server
+claude mcp add imessage "deno run --allow-read --allow-env --allow-sys --allow-ffi jsr:@wyattjoh/imessage-mcp"
+```
+**📚 Documentation**: [iMessage MCP](https://github.com/wyattjoh/imessage-mcp) - Read iMessage history and contacts  
+**⚠️ Security Note**: Read-only access to iMessage database - no sending capabilities
 
 ```bash
 # Supabase for database operations
@@ -309,6 +321,14 @@ source ~/.zshrc
 # Cross-system automation
 "Based on my calendar, draft follow-up emails for meetings that happened today"
 "Find emails related to my upcoming meetings and summarize key points"
+```
+
+### iMessage Integration (if enabled)
+```bash
+# Message analysis and context
+"Find iMessage conversations about [project] from last week"
+"Show me messages from [contact] to understand our conversation history"
+"Analyze my text message patterns to identify important business contacts"
 ```
 
 ## ⚠️ Claude Code Safety & Guardrails
