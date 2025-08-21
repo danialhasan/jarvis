@@ -178,16 +178,34 @@ claude mcp add Linear "https://mcp.linear.app/sse"
 ```
 **📚 Documentation**: [Linear MCP](https://mcp.linear.app) - Task and project management
 
-#### iMessage Integration (macOS Only)
+#### iMessage Integration (macOS Only) - **MOST CAPABLE**
 ```bash
-# Install Deno (required for iMessage MCP)
-brew install deno
+# Install UV package manager and Python requirements
+brew install uv python@3.11
 
-# Add iMessage MCP server
-claude mcp add imessage "deno run --allow-read --allow-env --allow-sys --allow-ffi jsr:@wyattjoh/imessage-mcp"
+# Install Mac Messages MCP server
+uv pip install mac-messages-mcp
+
+# Add to Claude Code
+claude mcp add messages "uvx mac-messages-mcp"
 ```
-**📚 Documentation**: [iMessage MCP](https://github.com/wyattjoh/imessage-mcp) - Read iMessage history and contacts  
-**⚠️ Security Note**: Read-only access to iMessage database - no sending capabilities
+
+**📚 Documentation**: [Mac Messages MCP](https://github.com/carterlasalle/mac_messages_mcp) - Full send/receive capabilities
+
+**🔐 Required Permissions**:
+1. **System Preferences** → **Security & Privacy** → **Full Disk Access**
+2. Add **Terminal** to the list
+3. Restart Terminal after granting access
+
+**✨ Capabilities**:
+- ✅ **Send Messages**: Text contacts directly from Claude
+- ✅ **Read History**: Search and analyze message conversations  
+- ✅ **Smart Routing**: Automatically chooses iMessage vs SMS
+- ✅ **Group Messages**: Handle group chat interactions
+- ✅ **Contact Management**: Phone number validation and contact matching
+- ✅ **Cross-platform**: Works with iPhone/Android contacts
+
+**⚠️ Security Note**: Full access to iMessage database - contains personal communications. Use responsibly.
 
 ```bash
 # Supabase for database operations
@@ -323,12 +341,20 @@ source ~/.zshrc
 "Find emails related to my upcoming meetings and summarize key points"
 ```
 
-### iMessage Integration (if enabled)
+### iMessage Integration (Full Send/Receive)
 ```bash
-# Message analysis and context
+# Send messages
+"Text [contact] about rescheduling tomorrow's meeting"
+"Send a follow-up message to the CarGO team about next steps"
+
+# Message analysis
 "Find iMessage conversations about [project] from last week"
 "Show me messages from [contact] to understand our conversation history"
 "Analyze my text message patterns to identify important business contacts"
+
+# Business workflow automation
+"Text reminder to all meeting attendees 1 hour before our call"
+"Send thank you messages to yesterday's workshop participants"
 ```
 
 ## ⚠️ Claude Code Safety & Guardrails
